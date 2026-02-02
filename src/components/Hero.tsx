@@ -76,10 +76,10 @@ const Hero = () => {
               </Button>
             </Link>
             <Link to="/dashboard">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="outline"
-                className="border-2 border-background/30 text-background hover:bg-background/10 text-base font-semibold px-8"
+                className="border-2 text-accent text-base font-semibold px-8"
               >
                 Join as Fisherman
               </Button>
@@ -92,19 +92,19 @@ const Hero = () => {
               <svg className="h-5 w-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Sustainable Sourcing</span>
+              <span className="text-white">Sustainable Sourcing</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-5 w-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Same Day Delivery</span>
+              <span className="text-white">Same Day Delivery</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-5 w-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Fair Prices for Fishermen</span>
+              <span className="text-white">Fair Prices for Fishermen</span>
             </div>
           </div>
         </div>

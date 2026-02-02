@@ -19,13 +19,22 @@ const FishCard = ({ fish }: FishCardProps) => {
     <Card className="group overflow-hidden border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg bg-card">
       {/* Image Container */}
       <div className="relative h-48 bg-muted overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
-          <FishIcon className="h-20 w-20 text-primary/30 group-hover:scale-110 transition-transform duration-500" />
-        </div>
-        
+        {fish.image ? (
+          <img
+            src={fish.image}
+            alt={fish.name}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
+            <FishIcon className="h-20 w-20 text-primary/30 group-hover:scale-110 transition-transform duration-500" />
+          </div>
+        )}
+
         {/* Availability Badge */}
-        <Badge 
-          variant="outline" 
+        <Badge
+          variant="outline"
           className={`absolute top-3 right-3 ${availabilityStyles[fish.availability]} font-medium`}
         >
           {fish.availability}

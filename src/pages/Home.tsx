@@ -46,16 +46,6 @@ const Home = () => {
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link to="/dashboard">
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-2 border-background/30 text-background hover:bg-background/10 gap-2"
-                  >
-                    <Users className="h-5 w-5" />
-                    Become a Seller
-                  </Button>
-                </Link>
               </div>
             </div>
           </div>

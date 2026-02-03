@@ -14,7 +14,104 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      credit_history: {
+        Row: {
+          amount: number
+          created_at: string
+          generation_id: string | null
+          id: string
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          generation_id?: string | null
+          id?: string
+          reason: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          generation_id?: string | null
+          id?: string
+          reason?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "credit_history_generation_id_fkey"
+            columns: ["generation_id"]
+            isOneToOne: false
+            referencedRelation: "thumbnail_generations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          credits: number
+          email: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          credits?: number
+          email: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          credits?: number
+          email?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      thumbnail_generations: {
+        Row: {
+          content_category: string
+          created_at: string
+          credits_used: number
+          generated_thumbnails: Json | null
+          id: string
+          original_image_url: string | null
+          target_platform: string
+          user_id: string
+          video_title: string
+        }
+        Insert: {
+          content_category: string
+          created_at?: string
+          credits_used?: number
+          generated_thumbnails?: Json | null
+          id?: string
+          original_image_url?: string | null
+          target_platform: string
+          user_id: string
+          video_title: string
+        }
+        Update: {
+          content_category?: string
+          created_at?: string
+          credits_used?: number
+          generated_thumbnails?: Json | null
+          id?: string
+          original_image_url?: string | null
+          target_platform?: string
+          user_id?: string
+          video_title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

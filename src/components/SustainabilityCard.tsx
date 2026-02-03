@@ -6,9 +6,11 @@ interface SustainabilityCardProps {
   title: string;
   description: string;
   impact?: string;
+  metric?: string;
+  metricLabel?: string;
 }
 
-const SustainabilityCard = ({ icon: Icon, title, description, impact }: SustainabilityCardProps) => {
+const SustainabilityCard = ({ icon: Icon, title, description, impact, metric, metricLabel }: SustainabilityCardProps) => {
   return (
     <Card className="border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg group">
       <CardContent className="p-6">
@@ -19,6 +21,12 @@ const SustainabilityCard = ({ icon: Icon, title, description, impact }: Sustaina
           <div className="space-y-2">
             <h3 className="font-semibold text-lg text-foreground">{title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+            {metric && (
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-primary">{metric}</span>
+                {metricLabel && <span className="text-sm text-muted-foreground">{metricLabel}</span>}
+              </div>
+            )}
             {impact && (
               <p className="text-primary font-medium text-sm">{impact}</p>
             )}

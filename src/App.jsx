@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/context/CartContext";
 import Index from "./pages/Index";
 import Explore from "./pages/Explore";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/Notfound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 

@@ -7,7 +7,7 @@ import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Explore Fish", path: "/explore" },
+  { name: "Explore Fish", path: "/login" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
@@ -102,7 +102,7 @@ const Navbar = () => {
         {/* Actions */}
         <div className="flex items-center gap-1">
           <Link
-            to="/explore"
+            to="/login"
             className="relative p-2.5 rounded-xl transition-all duration-300 hover:bg-slate-100 text-slate-500 hover:text-slate-800"
           >
             <ShoppingCart className="w-4.5 h-4.5" />
@@ -124,7 +124,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <Link
-            to="/explore"
+            to="/login"
             className="hidden md:flex ml-2 items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-sky-500 text-white hover:bg-sky-600 shadow-[0_2px_12px_0_rgba(14,165,233,0.3)] hover:shadow-[0_6px_24px_0_rgba(14,165,233,0.45)]"
           >
             Shop Now
@@ -195,7 +195,7 @@ const Navbar = () => {
 
               <div className="mt-3 pt-3 border-t border-slate-100">
                 <Link
-                  to="/explore"
+                  to="/login"
                   onClick={() => setMobileOpen(false)}
                   className="block w-full text-center px-4 py-3 rounded-xl bg-sky-500 text-white text-sm font-semibold hover:bg-sky-600 transition-colors shadow-[0_2px_12px_0_rgba(14,165,233,0.3)]"
                 >

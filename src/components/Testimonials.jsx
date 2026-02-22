@@ -93,23 +93,41 @@ const testimonials = [
   },
 ];
 
-const VISIBLE = 3;
 const GAP_PX = 20;
 
 const Testimonials = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [activeCard, setActiveCard] = useState(0);
   const [autoKey, setAutoKey] = useState(0);
+  const [visible, setVisible] = useState(3);
   const viewportRef = useRef(null);
   const animCtrl = useRef(null);
   const xVal = useMotionValue(0);
 
-  const maxStart = testimonials.length - VISIBLE;
+  // Calculate responsive VISIBLE based on screen size
+  useEffect(() => {
+    const updateVisible = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setVisible(1); // mobile
+      } else if (width < 1024) {
+        setVisible(2); // tablet
+      } else {
+        setVisible(3); // desktop
+      }
+    };
+
+    updateVisible();
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
+
+  const maxStart = testimonials.length - visible;
 
   const getCardWidth = () => {
     if (!viewportRef.current) return 0;
     const w = viewportRef.current.offsetWidth;
-    return (w - GAP_PX * (VISIBLE - 1)) / VISIBLE;
+    return (w - GAP_PX * (visible - 1)) / visible;
   };
 
   const slideTo = (idx) => {
@@ -154,7 +172,7 @@ const Testimonials = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setStartIndex((prev) => {
-        const next = prev >= maxStart ? 0 : prev + 1;
+        const next = prev >= (testimonials.length - visible) ? 0 : prev + 1;
         slideTo(next);
         return next;
       });
@@ -162,7 +180,7 @@ const Testimonials = () => {
     }, 5000);
     return () => clearInterval(timer);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoKey]);
+  }, [autoKey, visible]);
 
   useEffect(() => {
     const onResize = () => slideTo(startIndex);
@@ -237,13 +255,13 @@ const Testimonials = () => {
             {testimonials.map((t, i) => {
               const posInWindow = i - startIndex;
               const isActive =
-                posInWindow >= 0 && posInWindow < VISIBLE && posInWindow === activeCard;
+                posInWindow >= 0 && posInWindow < visible && posInWindow === activeCard;
 
               return (
                 <div
                   key={t.name}
                   onClick={() => {
-                    if (posInWindow >= 0 && posInWindow < VISIBLE)
+                    if (posInWindow >= 0 && posInWindow < visible)
                       setActiveCard(posInWindow);
                   }}
                   className={`
@@ -256,7 +274,7 @@ const Testimonials = () => {
                     }
                   `}
                   style={{
-                    width: `calc((100% - ${GAP_PX * (VISIBLE - 1)}px) / ${VISIBLE})`,
+                    width: `calc((100% - ${GAP_PX * (visible - 1)}px) / ${visible})`,
                     // use CSS container width at render time — this works because flexbox already respects it
                   }}
                 >
@@ -350,7 +368,7 @@ const Testimonials = () => {
         <p className="text-center text-xs text-slate-400 mt-4 font-medium">
           Showing{" "}
           <span className="text-slate-600 font-semibold">
-            {startIndex + 1}–{Math.min(startIndex + VISIBLE, testimonials.length)}
+            {startIndex + 1}–{Math.min(startIndex + visible, testimonials.length)}
           </span>{" "}
           of{" "}
           <span className="text-slate-600 font-semibold">{testimonials.length}</span>{" "}
